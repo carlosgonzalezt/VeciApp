@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoglobal"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/pt_correo"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pt_correo"
+        android:inputType="textPersonName"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/pt_usuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/pt_usuario"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pt_usuario"
+        android:inputType="textPersonName"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/pw_clave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btn_siguiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="36dp"
+        android:background="@color/fondocajas"
+        android:hint="@string/btn_siguiente"
+        android:onClick="siguiente"
+        android:text="@string/btn_siguiente"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_apellido"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:autofillHints=""
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pt_apellido"
+        android:inputType="textPersonName"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/pt_correo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_nombre"
+        android:layout_width="300dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:autofillHints=""
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pt_nombre"
+        android:inputType="textPersonName"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/pt_apellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/pw_clave"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pw_clave"
+        android:inputType="textPassword"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/pw_repclave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:hint="@string/tv_titulo"
+        android:text="@string/tv_titulo"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/titulos"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/pt_nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
+
+    <EditText
+        android:id="@+id/pw_repclave"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="28dp"
+        android:autofillHints=""
+        android:background="@color/fondocajas"
+        android:ems="10"
+        android:hint="@string/pw_repclave"
+        android:inputType="textPassword"
+        android:textColor="@color/textonormal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_siguiente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

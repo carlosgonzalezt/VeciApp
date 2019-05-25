@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">VeciApp</string>
+    <string name="tv_titulo">Datos Personales</string>
+    <string name="pt_nombre">Ingrese su Nombre</string>
+    <string name="pt_apellido">Ingrese su Apellido</string>
+    <string name="pt_correo">Ingrese su Correo</string>
+    <string name="pt_usuario">Ingrese su Usuario</string>
+    <string name="pw_clave">Ingrese la Clave</string>
+    <string name="pw_repclave">Repita la Clave</string>
+    <string name="btn_siguiente">Siguiente</string>
+    <string name="tv_titulo2">Datos del Negocio</string>
+    <string name="tv_nomUsuario">Nombre del Usuario</string>
+    <string name="pt_nombrenegocio">Nombre de su Negocio</string>
+    <string name="btn_regresar">Regresar</string>
+    <string name="btn_registrar">Registrar</string>
+</resources>
