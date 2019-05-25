@@ -40,7 +40,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void siguiente(View view){
+        String nombre = ob_pt_nombre.getText().toString();
+        String apellido = ob_pt_apellido.getText().toString();
+        String correo = ob_pt_correo.getText().toString();
+        String usuario = ob_pt_usuario.getText().toString();
+        String clave = ob_pt_repclave.getText().toString();
+
         Intent sig = new Intent(this,InformacionNegocio.class);
+        sig.putExtra("main_nombre",nombre.toString());
+        sig.putExtra("main_apellido",apellido.toString());
+        sig.putExtra("main_correo",correo.toString());
+        sig.putExtra("main_usuario",usuario.toString());
+        sig.putExtra("main_clave",clave.toString());
         startActivity(sig);
     }
 }

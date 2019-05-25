@@ -18,6 +18,12 @@ public class InformacionNegocio extends AppCompatActivity {
     private EditText ob_pt_nombrenegocio;
     private MapView ob_mapView1;
 
+    private String v_nombre = "";
+    private String v_apellido = "";
+    private String v_correo = "";
+    private String v_usuario = "";
+    private String v_clave = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,14 @@ public class InformacionNegocio extends AppCompatActivity {
         String[] opciones = {"Tienda", "Verduleria / Fruteria o similares", "Carniceria", "Papeleria", "Centro de computo", "Ferreteria", "Farmacia", "Costureria", "Otros"};
         ArrayAdapter<String> objeto_adapter = new ArrayAdapter<String>(this, R.layout.sppiner, opciones);
         ob_sp_negocio.setAdapter(objeto_adapter);
+
+        v_nombre = getIntent().getStringExtra("main_nombre");
+        v_apellido = getIntent().getStringExtra("main_apellido");
+        v_correo = getIntent().getStringExtra("main_correo");
+        v_usuario = getIntent().getStringExtra("main_usuario");
+        v_clave = getIntent().getStringExtra("main_clave");
+
+        ob_tv_titulo2.setText(v_usuario);
     }
 
     public void regresar(View view){
