@@ -54,4 +54,7 @@ public class MainActivity extends AppCompatActivity {
         sig.putExtra("main_clave",clave.toString());
         startActivity(sig);
     }
+
+    //https://www.movilzona.es/tutoriales/android/desarrollo/curso-de-desarrollo-android-tema-18-webview-que-es-y-como-funciona-la-vista-de-navegacion-web/
+
 }
