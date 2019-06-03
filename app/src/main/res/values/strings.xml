@@ -13,4 +13,6 @@
     <string name="pt_nombrenegocio">Nombre de su Negocio</string>
     <string name="btn_regresar">Regresar</string>
     <string name="btn_registrar">Registrar</string>
+    <string name="ib_loading">Loading</string>
+    <string name="todo">TODO</string>
 </resources>
