@@ -14,7 +14,7 @@ public class Loading extends AppCompatActivity {
     }
 
     public void cargar(View view){
-        Intent sig = new Intent(this,MainActivity.class);
+        Intent sig = new Intent(this,registro.class);
         startActivity(sig);
     }
 }

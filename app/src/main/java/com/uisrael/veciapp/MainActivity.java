@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         ob_pt_nombre = (EditText) findViewById(R.id.pt_nombre);
         ob_pt_apellido = (EditText) findViewById(R.id.pt_apellido);
         ob_pt_correo = (EditText) findViewById(R.id.pt_correo);
-        ob_pt_usuario = (EditText) findViewById(R.id.pt_usuario);
         ob_pt_clave = (EditText) findViewById(R.id.pw_clave);
         ob_pt_repclave = (EditText) findViewById(R.id.pw_repclave);
 

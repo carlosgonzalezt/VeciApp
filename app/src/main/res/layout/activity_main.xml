@@ -11,31 +11,16 @@
         android:id="@+id/pt_correo"
         android:layout_width="300dp"
         android:layout_height="46dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:background="@color/fondocajas"
         android:ems="10"
         android:hint="@string/pt_correo"
         android:inputType="textPersonName"
         android:textColor="@color/textonormal"
-        app:layout_constraintBottom_toTopOf="@+id/pt_usuario"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/pt_usuario"
-        android:layout_width="240dp"
-        android:layout_height="46dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/fondocajas"
-        android:ems="10"
-        android:hint="@string/pt_usuario"
-        android:inputType="textPersonName"
-        android:textColor="@color/textonormal"
         app:layout_constraintBottom_toTopOf="@+id/pw_clave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_siguiente"
