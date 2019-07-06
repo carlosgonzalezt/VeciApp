@@ -3,8 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="fondoglobal">#deeff2</color>
-    <color name="fondocajas">#bdccc5</color>
+    <color name="fondoglobal">#DEEFF2</color>
+    <color name="fondocajas">#BDCCC5</color>
     <color name="enlaces">#5c6b8c</color>
     <color name="titulos">#602C2C</color>
     <color name="textonormal">#09272d</color>
