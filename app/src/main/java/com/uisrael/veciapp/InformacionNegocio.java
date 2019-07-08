@@ -29,10 +29,10 @@ public class InformacionNegocio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_negocio);
 
-        ob_tv_titulo2 = (TextView) findViewById(R.id.tv_titulo2);
-        ob_sp_negocio = (Spinner) findViewById(R.id.sp_negocio);
-        ob_pt_nombrenegocio = (EditText) findViewById(R.id.pt_nombrenegocio);
-        ob_mapView1 = (MapView) findViewById(R.id.mapView1);
+        ob_tv_titulo2 = findViewById(R.id.tv_titulo2);
+        ob_sp_negocio = findViewById(R.id.sp_negocio);
+        ob_pt_nombrenegocio = findViewById(R.id.pt_nombrenegocio);
+        ob_mapView1 = findViewById(R.id.mapView1);
 
         //Asignar los valores al spiner para seleccionar
         String[] opciones = {"Tienda", "Verduleria / Fruteria o similares", "Carniceria", "Papeleria", "Centro de computo", "Ferreteria", "Farmacia", "Costureria", "Otros"};

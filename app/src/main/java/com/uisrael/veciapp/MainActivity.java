@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Se asignan las variables a los objetos creados en el activity
-        ob_pt_nombre = (EditText) findViewById(R.id.pt_nombre);
-        ob_pt_apellido = (EditText) findViewById(R.id.pt_apellido);
-        ob_pt_correo = (EditText) findViewById(R.id.pt_correo);
-        ob_pt_clave = (EditText) findViewById(R.id.pw_clave);
-        ob_pt_repclave = (EditText) findViewById(R.id.pw_repclave);
+        ob_pt_nombre = findViewById(R.id.pt_nombre);
+        ob_pt_apellido = findViewById(R.id.pt_apellido);
+        ob_pt_correo = findViewById(R.id.pt_correo);
+        ob_pt_clave = findViewById(R.id.pw_clave);
+        ob_pt_repclave = findViewById(R.id.pw_repclave);
 
     }
 
@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         String clave = ob_pt_repclave.getText().toString();
 
         Intent sig = new Intent(this,InformacionNegocio.class);
-        sig.putExtra("main_nombre",nombre.toString());
-        sig.putExtra("main_apellido",apellido.toString());
-        sig.putExtra("main_correo",correo.toString());
-        sig.putExtra("main_usuario",usuario.toString());
-        sig.putExtra("main_clave",clave.toString());
+        sig.putExtra("main_nombre", nombre);
+        sig.putExtra("main_apellido", apellido);
+        sig.putExtra("main_correo", correo);
+        sig.putExtra("main_usuario", usuario);
+        sig.putExtra("main_clave", clave);
         startActivity(sig);
     }
 
