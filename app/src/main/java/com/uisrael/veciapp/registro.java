@@ -1,20 +1,109 @@
 package com.uisrael.veciapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+import android.database.sqlite.SQLiteDatabase;
 
 public class registro extends AppCompatActivity {
+
+    private EditText pt_correo, pw_contrasena1, pw_contrasena2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+        pt_correo = (EditText) findViewById(R.id.pt_correo);
+        pw_contrasena1 = (EditText) findViewById(R.id.pw_clave);
+        pw_contrasena2 = (EditText) findViewById(R.id.pw_repclave);
     }
 
+    public boolean Confirmacion(){
+        boolean resultado = false;
+        String clave1 = pw_contrasena1.getText().toString();
+        String clave2 = pw_contrasena2.getText().toString();
 
+        if(!clave1.isEmpty() && !clave2.isEmpty()) {
+            if (clave1==clave2){
+                resultado = true;
+            }else{
+                resultado = false;
+            }
+        }else{
+            Toast.makeText(this, "Debe llenar los campos de contraseña.", Toast.LENGTH_SHORT).show();
+        }
+
+        return resultado;
+    }
+
+    public boolean ExisUsuario(){
+        boolean existe = false;
+
+        VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this,"administracion",null,1);
+        SQLiteDatabase BasedeDatos = admin.getWritableDatabase();
+
+        String correo = pt_correo.getText().toString();
+
+        if(!correo.isEmpty()){
+            Cursor fila = BasedeDatos.rawQuery("select * from usuario where correo_electronico='"+pt_correo+"'", null);
+            if(fila.moveToFirst()){
+                existe = true;
+            }else {
+                existe = false;
+            }
+        }else{
+            Toast.makeText(this, "Debe llenar el campo del correo electronico.", Toast.LENGTH_SHORT).show();
+        }
+        BasedeDatos.close();
+
+        return existe;
+    }
+
+    public void Registrar(View view){
+        if (Confirmacion()){//Se verifica que la contraseña y la confirmacion sea la misma
+            if(ExisUsuario()){//Se confirma si el usuaio ya existe para que no se repita
+                Toast.makeText(this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
+            }else{
+                try {
+                    //Aqui va el codigo de guardado
+                    VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this, "administracion", null, 1);
+                    SQLiteDatabase BasedeDatos = admin.getWritableDatabase();//abre la BD de modo lectura escritura
+
+                    Integer id_usuario = 1;
+                    String correo = pt_correo.getText().toString();
+                    String clave = pw_contrasena1.getText().toString();
+                    String tipo = "usuario normal";
+
+                    ContentValues registro = new ContentValues();
+                    registro.put("id_usuario", id_usuario);
+                    registro.put("correo_electronico", correo);
+                    registro.put("t_usuario", tipo);
+                    registro.put("clave", clave);
+
+                    BasedeDatos.insert("usuario", null, registro);
+                    BasedeDatos.close();
+
+                    pt_correo.setText("");
+                    pw_contrasena1.setText("");
+                    pw_contrasena2.setText("");
+
+                    Toast.makeText(this, "Registro correcto", Toast.LENGTH_SHORT).show();
+
+                    Intent sig = new Intent(this, navegador.class);
+                    startActivity(sig);
+                }catch(Error e){
+                    Toast.makeText(this, "Un error ha ocurrido: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }else{
+            Toast.makeText(this, "la Contraseña y su confirmacion no coiciden", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

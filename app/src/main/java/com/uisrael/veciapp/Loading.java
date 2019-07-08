@@ -27,7 +27,6 @@ public class Loading extends AppCompatActivity {
                 BasedeDatos.close();
                 Intent sig = new Intent(this,navegador.class);
                 startActivity(sig);
-
             }else{
                 Toast.makeText(this, "NO SE ENCUENTRA REGISTRADO", Toast.LENGTH_SHORT).show();
                 Intent sig = new Intent(this,registro.class);
