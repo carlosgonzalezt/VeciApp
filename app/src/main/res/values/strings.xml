@@ -7,7 +7,7 @@
     <string name="pt_usuario">Ingrese su Usuario</string>
     <string name="pw_clave">Ingrese la Clave</string>
     <string name="pw_repclave">Repita la Clave</string>
-    <string name="btn_siguiente">Siguiente</string>
+    <string name="btn_siguiente">Guardar</string>
     <string name="tv_titulo2">Datos del Negocio</string>
     <string name="tv_nomUsuario">Nombre del Usuario</string>
     <string name="pt_nombrenegocio">Nombre de su Negocio</string>

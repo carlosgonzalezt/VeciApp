@@ -32,7 +32,6 @@ public class registro extends AppCompatActivity {
 
         if(clave1.length()>0 && clave2.length()>0) {
             if (clave1.equals(clave2)){
-
                 resultado = true;
             }else {
                 resultado = false;
@@ -58,7 +57,6 @@ public class registro extends AppCompatActivity {
                 existe = true;
             }else {
                 existe = false;
-
             }
         }else{
             Toast.makeText(this, "Debe llenar el campo del correo electronico.", Toast.LENGTH_SHORT).show();

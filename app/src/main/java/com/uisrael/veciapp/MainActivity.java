@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void siguiente(View view){
 
-        if(ob_pt_clave.getText().length()>1){
+        /*if(ob_pt_clave.getText().length()>1){
             String nombre = ob_pt_nombre.getText().toString();
             String apellido = ob_pt_apellido.getText().toString();
             String correo = ob_pt_correo.getText().toString();
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(sig);
         }else{
             ob_pt_clave.setError("Este campo no deve estar en blanco");
-        }
+        }*/
 
     }
 
