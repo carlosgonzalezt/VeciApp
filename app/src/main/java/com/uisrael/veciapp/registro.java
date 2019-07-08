@@ -76,13 +76,13 @@ public class registro extends AppCompatActivity {
                     VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this, "administracion", null, 1);
                     SQLiteDatabase BasedeDatos = admin.getWritableDatabase();//abre la BD de modo lectura escritura
 
-                    Integer id_usuario = 1;
+                    //Integer id_usuario = 1;
                     String correo = pt_correo.getText().toString();
                     String clave = pw_contrasena1.getText().toString();
                     String tipo = "usuario normal";
 
                     ContentValues registro = new ContentValues();
-                    registro.put("id_usuario", id_usuario);
+                    //registro.put("id_usuario", id_usuario);
                     registro.put("correo_electronico", correo);
                     registro.put("t_usuario", tipo);
                     registro.put("clave", clave);
