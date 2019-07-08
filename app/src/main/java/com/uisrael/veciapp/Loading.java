@@ -18,21 +18,24 @@ public class Loading extends AppCompatActivity {
 
     public void cargar(View view){
 
-            VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this,"administracion",null,1);
-            SQLiteDatabase BasedeDatos = admin.getWritableDatabase();//modo lectura escritura
+        try {
+            VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this, "administracion", null, 1);
+            SQLiteDatabase veciDB = admin.getWritableDatabase();//modo lectura escritura
 
-            Cursor fila = BasedeDatos.rawQuery("select descripcion,precio from articulos ", null); //deja aplicar select
+            Cursor fila = veciDB.rawQuery("select correo_electronico from usuario ", null); //deja aplicar select
 
             if(fila.moveToFirst()){
-                BasedeDatos.close();
+                veciDB.close();
                 Intent sig = new Intent(this,navegador.class);
                 startActivity(sig);
             }else{
                 Toast.makeText(this, "NO SE ENCUENTRA REGISTRADO", Toast.LENGTH_SHORT).show();
                 Intent sig = new Intent(this,registro.class);
                 startActivity(sig);
-                BasedeDatos.close();
+                veciDB.close();
             }
-
+        }catch(Error e){
+            Toast.makeText(this, "Salio un error. "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
