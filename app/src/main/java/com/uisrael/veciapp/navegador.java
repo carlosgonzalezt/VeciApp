@@ -3,7 +3,7 @@ package com.uisrael.veciapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class navegador extends AppCompatActivity {
+public class navegador extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

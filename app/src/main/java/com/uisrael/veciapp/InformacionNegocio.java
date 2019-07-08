@@ -1,5 +1,6 @@
 package com.uisrael.veciapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.MapView;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class InformacionNegocio extends AppCompatActivity {
 
@@ -46,10 +53,30 @@ public class InformacionNegocio extends AppCompatActivity {
         v_clave = getIntent().getStringExtra("main_clave");
 
         ob_tv_titulo2.setText(v_usuario);
+
+
     }
 
-    public void regresar(View view){
-        Intent regr = new Intent(this,MainActivity.class);
-        startActivity(regr);
+
+
+    //metodo para guardar
+    public void Guardar(View view){
+
+        try{
+            //metodo para escribir en un nuevo archivo
+            OutputStreamWriter archivo=  new OutputStreamWriter(openFileOutput("locales.txt", Activity.MODE_PRIVATE));
+            archivo.write(v_nombre+"\n"+v_apellido+"\n"+v_correo+"\n"+v_usuario+"\n"+v_clave);
+            archivo.flush();
+            archivo.close();
+
+        }catch (IOException e){
+
+        }
+
+        Toast.makeText(this, "REGISTRO GUARDADOS CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+        Intent sig = new Intent(this,navegador.class);
+        startActivity(sig);
     }
+
+
 }

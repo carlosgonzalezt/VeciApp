@@ -11,7 +11,7 @@ public class VeciSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase veciDB) {//nombre de la base de datos
-        veciDB.execSQL("create table usuario(id_usuario integer primary key autoincrement,correo_electronico text,t_usuatio text, clave text)");
+        veciDB.execSQL("create table usuario(id_usuario integer primary key ,correo text,t_usuatio text, clave text)");
     }
 
     @Override

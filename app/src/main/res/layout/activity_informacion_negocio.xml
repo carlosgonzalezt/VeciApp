@@ -30,6 +30,7 @@
         android:layout_marginBottom="32dp"
         android:background="@color/fondocajas"
         android:hint="@string/btn_registrar"
+        android:onClick="Guardar"
         android:text="@string/btn_registrar"
         android:textColor="@color/textonormal"
         app:layout_constraintBottom_toBottomOf="parent"

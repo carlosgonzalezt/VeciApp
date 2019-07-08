@@ -22,7 +22,7 @@ public class Loading extends AppCompatActivity {
             VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this, "administracion", null, 1);
             SQLiteDatabase veciDB = admin.getWritableDatabase();//modo lectura escritura
 
-            Cursor fila = veciDB.rawQuery("select correo_electronico from usuario ", null); //deja aplicar select
+            Cursor fila = veciDB.rawQuery("select correo from usuario ", null); //deja aplicar select
 
             if(fila.moveToFirst()){
                 veciDB.close();
