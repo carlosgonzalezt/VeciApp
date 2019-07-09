@@ -1,10 +1,14 @@
 package com.uisrael.veciapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText ob_pt_correo;
     private EditText ob_pt_usuario;
     private EditText ob_pt_clave;
-    private EditText ob_pt_repclave;
-
+    private int idactual=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,70 +36,63 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Se asignan las variables a los objetos creados en el activity
-        ob_pt_nombre = (EditText) findViewById(R.id.pt_nombre);
-        ob_pt_apellido = (EditText) findViewById(R.id.pt_apellido);
-        ob_pt_correo = (EditText) findViewById(R.id.pt_correo);
-        ob_pt_clave = (EditText) findViewById(R.id.pw_clave);
-        ob_pt_repclave = (EditText) findViewById(R.id.pw_repclave);
-
-        String [] archivos=fileList();
-        if(ExisteArchivo(archivos,"locales.txt")){
-            try{
-                InputStreamReader archivo = new InputStreamReader(openFileInput("locales.txt"));
-                BufferedReader br= new BufferedReader(archivo);
-                String linea = br.readLine();
-                String notas[]=new String[99];
-                int count=0;
-                while(linea!=null){
-                    notas[count]=linea;
-                    linea = br.readLine();
-                    count++;
-
-                }
-                br.close();
-                archivo.close();
-                ob_pt_nombre.setText(notas[0]);
-                ob_pt_apellido.setText(notas[1]);
-                ob_pt_correo.setText(notas[2]);
-                ob_pt_usuario.setText(notas[3]);
-            }catch (IOException e){
-
-            }
-
-        }
+        ob_pt_nombre =  findViewById(R.id.pt_nombre);
+        ob_pt_apellido = findViewById(R.id.pt_apellido);
+        ob_pt_correo =  findViewById(R.id.pt_correo);
+        ob_pt_clave =  findViewById(R.id.pw_clave);
+        buscar();
 
     }
-    private boolean ExisteArchivo(String[] archivos, String nombreArchivo){
 
-        for(int i=0;i<archivos.length;i++){
-            if(nombreArchivo.equals(archivos[i]))
-                return true;
-            return false;
-        }
-        return false;
-    }
+    //METODO BUSCAR
+    public void buscar(){
 
-    public void siguiente(View view){
+        VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this,"administracion",null,1);
+        SQLiteDatabase BasedeDatos = admin.getWritableDatabase();//modo lectura escritura
 
-        /*if(ob_pt_clave.getText().length()>1){
-            String nombre = ob_pt_nombre.getText().toString();
-            String apellido = ob_pt_apellido.getText().toString();
-            String correo = ob_pt_correo.getText().toString();
-            String usuario = ob_pt_usuario.getText().toString();
-            String clave = ob_pt_clave.getText().toString();
+        Cursor fila = BasedeDatos.rawQuery("select * from usuario", null); //deja aplicar select
 
-            Intent sig = new Intent(this,InformacionNegocio.class);
-            sig.putExtra("main_nombre",nombre.toString());
-            sig.putExtra("main_apellido",apellido.toString());
-            sig.putExtra("main_correo",correo.toString());
-            sig.putExtra("main_usuario",usuario.toString());
-            sig.putExtra("main_clave",clave.toString());
-            startActivity(sig);
+        if(fila.moveToFirst()){
+            idactual=fila.getInt(0);
+            ob_pt_correo.setText(fila.getString(1)); //siempre el primero es 0
+            ob_pt_clave.setText(fila.getString(3));
+            BasedeDatos.close();
         }else{
-            ob_pt_clave.setError("Este campo no deve estar en blanco");
-        }*/
+            Toast.makeText(this, "NO EXISTE USUARIO ", Toast.LENGTH_SHORT).show();
+            BasedeDatos.close();
+        }
+
 
     }
+    //METODO MODIFICAR
+    public void modificar(View view){
+        VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this,"administracion",null,1);
+        SQLiteDatabase BasedeDatos = admin.getWritableDatabase();
+
+        String correo= ob_pt_correo.getText().toString();
+        String clave = ob_pt_clave.getText().toString();
+
+        if(!correo.isEmpty() && !clave.isEmpty() ){
+
+            ContentValues registro= new ContentValues();
+            registro.put("correo", correo);
+            registro.put("clave", clave);
+
+            int cantidad = BasedeDatos.update("usuario",registro,"id_usuario="+idactual,null);
+            BasedeDatos.close();
+
+            if(cantidad==1){
+                Toast.makeText(this, "SE HA MODIFICADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
+            }else{
+
+                Toast.makeText(this, "NO EXISTE EL USUARIO", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+
+            Toast.makeText(this, "CAMPOS VACIOS", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     //https://www.movilzona.es/tutoriales/android/desarrollo/curso-de-desarrollo-android-tema-18-webview-que-es-y-como-funciona-la-vista-de-navegacion-web/
 

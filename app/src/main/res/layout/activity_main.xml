@@ -40,6 +40,22 @@
                 app:layout_constraintVertical_bias="0.976" />
 
             <EditText
+                android:id="@+id/pt_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginBottom="24dp"
+                android:autofillHints=""
+                android:background="@color/fondocajas"
+                android:ems="10"
+                android:hint="@string/pt_nombre"
+                android:inputType="textPersonName"
+                android:textColor="@color/textonormal"
+                app:layout_constraintBottom_toTopOf="@+id/pt_apellido"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
                 android:id="@+id/pt_apellido"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -71,22 +87,6 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/pt_nombre"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginBottom="24dp"
-                android:autofillHints=""
-                android:background="@color/fondocajas"
-                android:ems="10"
-                android:hint="@string/pt_nombre"
-                android:inputType="textPersonName"
-                android:textColor="@color/textonormal"
-                app:layout_constraintBottom_toTopOf="@+id/pt_apellido"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
                 android:id="@+id/pw_clave"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
@@ -99,22 +99,6 @@
                 android:textColor="@color/textonormal"
                 app:layout_constraintBottom_toTopOf="@+id/pw_repclave"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/pw_repclave"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginBottom="28dp"
-                android:autofillHints=""
-                android:background="@color/fondocajas"
-                android:ems="10"
-                android:hint="@string/pw_repclave"
-                android:inputType="textPassword"
-                android:textColor="@color/textonormal"
-                app:layout_constraintBottom_toTopOf="@+id/btn_siguiente"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -188,7 +172,7 @@
                 android:layout_marginBottom="36dp"
                 android:background="@color/fondocajas"
                 android:hint="@string/btn_siguiente"
-                android:onClick="siguiente"
+                android:onClick="modificar"
                 android:text="@string/btn_siguiente"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/textonormal"
