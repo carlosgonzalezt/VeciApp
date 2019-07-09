@@ -117,27 +117,30 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-
-            <RadioButton
-                android:id="@+id/rb_uestandar"
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:checked="true"
-                android:onClick="S_U_Simple"
-                android:text="@string/rb_unormal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/textonormal"
-                android:textStyle="bold" />
+                android:layout_height="match_parent">
+                <RadioButton
+                    android:id="@+id/rb_uestandar"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:checked="true"
+                    android:onClick="S_U_Simple"
+                    android:text="@string/rb_unormal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/textonormal"
+                    android:textStyle="bold" />
 
-            <RadioButton
-                android:id="@+id/rb_unegocio"
-                android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:onClick="S_U_Negocio"
-                android:text="@string/rb_unegocio"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/textonormal"
-                android:textStyle="bold" />
+                <RadioButton
+                    android:id="@+id/rb_unegocio"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:onClick="S_U_Negocio"
+                    android:text="@string/rb_unegocio"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/textonormal"
+                    android:textStyle="bold" />
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/tv_dnegocion"
