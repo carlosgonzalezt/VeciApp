@@ -16,4 +16,6 @@
     <string name="ib_loading">Loading</string>
     <string name="todo">TODO</string>
     <string name="tv_registrar">Registro</string>
+    <string name="rb_unormal">Usuario Estandar</string>
+    <string name="rb_unegocio">Usuario con negocio</string>
 </resources>

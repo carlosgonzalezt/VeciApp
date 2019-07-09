@@ -20,6 +20,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btn_siguiente"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="36dp"
+                android:background="@color/fondocajas"
+                android:hint="@string/btn_siguiente"
+                android:onClick="modificar"
+                android:text="@string/btn_siguiente"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/textonormal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.796"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
                 android:id="@+id/tv_titulo"
                 android:layout_width="match_parent"
@@ -97,12 +113,34 @@
                 android:hint="@string/pw_clave"
                 android:inputType="textPassword"
                 android:textColor="@color/textonormal"
-                app:layout_constraintBottom_toTopOf="@+id/pw_repclave"
+                app:layout_constraintBottom_toTopOf="@+id/pt_correo"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+
+            <RadioButton
+                android:id="@+id/rb_uestandar"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:checked="true"
+                android:onClick="S_U_Simple"
+                android:text="@string/rb_unormal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/textonormal"
+                android:textStyle="bold" />
+
+            <RadioButton
+                android:id="@+id/rb_unegocio"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:onClick="S_U_Negocio"
+                android:text="@string/rb_unegocio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/textonormal"
+                android:textStyle="bold" />
+
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tv_dnegocion"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginStart="8dp"
@@ -118,7 +156,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.763" />
+                app:layout_constraintVertical_bias="0.763"
+                android:visibility="invisible"/>
 
             <Spinner
                 android:id="@+id/sp_negocio"
@@ -131,7 +170,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/pt_nombrenegocio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="invisible"/>
 
             <EditText
                 android:id="@+id/pt_nombrenegocio"
@@ -149,7 +189,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/mapView1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="invisible"/>
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView1"
@@ -162,26 +203,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.485"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Button
-                android:id="@+id/btn_siguiente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="36dp"
-                android:background="@color/fondocajas"
-                android:hint="@string/btn_siguiente"
-                android:onClick="modificar"
-                android:text="@string/btn_siguiente"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/textonormal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.796"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="invisible"/>
         </LinearLayout>
-
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

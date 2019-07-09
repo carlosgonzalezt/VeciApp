@@ -8,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.MapView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
     private EditText ob_pt_correo;
     private EditText ob_pt_usuario;
     private EditText ob_pt_clave;
+    private TextView ob_tv_dnegocio;
+    private Spinner ob_sp_negocio;
+    private EditText ob_pt_nomnegocio;
+    private MapView ob_mp_mapa;
     private int idactual=0;
 
     @Override
@@ -40,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         ob_pt_apellido = findViewById(R.id.pt_apellido);
         ob_pt_correo =  findViewById(R.id.pt_correo);
         ob_pt_clave =  findViewById(R.id.pw_clave);
+        ob_tv_dnegocio = findViewById(R.id.tv_dnegocion);
+        ob_sp_negocio = findViewById(R.id.sp_negocio);
+        ob_pt_nomnegocio = findViewById(R.id.pt_nombrenegocio);
+        ob_mp_mapa = findViewById(R.id.mapView1);
         buscar();
 
     }
@@ -93,7 +105,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Seleccion de tipo de usuario
+    public void S_U_Simple(View view){
+        ob_tv_dnegocio.setVisibility(View.INVISIBLE);
+        ob_sp_negocio.setVisibility(View.INVISIBLE);
+        ob_pt_nomnegocio.setVisibility(View.INVISIBLE);
+        ob_mp_mapa.setVisibility(View.INVISIBLE);
+    }
 
+    public void S_U_Negocio(View view){
+        ob_tv_dnegocio.setVisibility(View.VISIBLE);
+        ob_sp_negocio.setVisibility(View.VISIBLE);
+        ob_pt_nomnegocio.setVisibility(View.VISIBLE);
+        ob_mp_mapa.setVisibility(View.VISIBLE);
+    }
     //https://www.movilzona.es/tutoriales/android/desarrollo/curso-de-desarrollo-android-tema-18-webview-que-es-y-como-funciona-la-vista-de-navegacion-web/
 
 }
