@@ -79,13 +79,18 @@ public class registro extends AppCompatActivity {
 
                     //para crear y guardar el usuario
                     Cursor fila = BasedeDatos.rawQuery("select MAX(id_usuario) as id from usuario ", null);
-                    //Integer id_usuario = 1;
+                    int id_usuario = 0;
+                    try{
+                        id_usuario = fila.getInt(fila.getPosition());
+                    }catch(Error e){
+                        id_usuario = 1;
+                    }
                     String correo = pt_correo.getText().toString();
                     String clave = pw_contrasena1.getText().toString();
                     String tipo = "usuario normal";
 
                     ContentValues registro = new ContentValues();
-                    registro.put("id_usuario",fila.getCount()+1);
+                    registro.put("id_usuario",id_usuario);
                     registro.put("correo", correo);
                     registro.put("t_usuatio", tipo);
                     registro.put("clave", clave);
@@ -93,10 +98,18 @@ public class registro extends AppCompatActivity {
                     BasedeDatos.insert("usuario", null, registro);
 
                     //para crear y guardar el perfil del usuario
-                    Cursor fila_pu = BasedeDatos.rawQuery("select MAX(id_usuario) as id from perfil_usuario ", null);
+                    Cursor fila_pu = BasedeDatos.rawQuery("select MAX(id_datos_us) as id from perfil_usuario ", null);
                     ContentValues registro_pu = new ContentValues();
-                    registro.put("id_datos_us",fila_pu.getCount()+1);
-                    registro.put("id_usuario", fila.getCount()+1);
+
+                    int id_pusuario = 0;
+                    try{
+                        id_pusuario = fila_pu.getInt(fila_pu.getPosition());
+                    }catch(Error e){
+                        id_pusuario = 1;
+                    }
+
+                    registro.put("id_datos_us",id_pusuario);
+                    registro.put("id_usuario", id_usuario);
                     registro.put("nombres", "");
                     registro.put("apellidos", "");
 
