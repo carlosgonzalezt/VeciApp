@@ -77,6 +77,7 @@ public class registro extends AppCompatActivity {
                     VeciSQLiteOpenHelper admin = new VeciSQLiteOpenHelper(this, "administracion", null, 1);
                     SQLiteDatabase BasedeDatos = admin.getWritableDatabase();//abre la BD de modo lectura escritura
 
+                    //para crear y guardar el usuario
                     Cursor fila = BasedeDatos.rawQuery("select MAX(id_usuario) as id from usuario ", null);
                     //Integer id_usuario = 1;
                     String correo = pt_correo.getText().toString();
@@ -84,13 +85,23 @@ public class registro extends AppCompatActivity {
                     String tipo = "usuario normal";
 
                     ContentValues registro = new ContentValues();
-                    //registro.put("id_usuario", id_usuario);
                     registro.put("id_usuario",fila.getCount()+1);
                     registro.put("correo", correo);
                     registro.put("t_usuatio", tipo);
                     registro.put("clave", clave);
 
                     BasedeDatos.insert("usuario", null, registro);
+
+                    //para crear y guardar el perfil del usuario
+                    Cursor fila_pu = BasedeDatos.rawQuery("select MAX(id_usuario) as id from perfil_usuario ", null);
+                    ContentValues registro_pu = new ContentValues();
+                    registro.put("id_datos_us",fila_pu.getCount()+1);
+                    registro.put("id_usuario", fila.getCount()+1);
+                    registro.put("nombres", "");
+                    registro.put("apellidos", "");
+
+                    BasedeDatos.insert("perfil_usuario", null, registro_pu);
+
                     BasedeDatos.close();
 
                     pt_correo.setText("");
