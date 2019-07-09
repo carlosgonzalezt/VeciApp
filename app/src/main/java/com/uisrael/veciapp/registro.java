@@ -80,11 +80,16 @@ public class registro extends AppCompatActivity {
                     //para crear y guardar el usuario
                     Cursor fila = BasedeDatos.rawQuery("select MAX(id_usuario) as id from usuario ", null);
                     int id_usuario = 0;
-                    try{
-                        id_usuario = fila.getInt(fila.getPosition());
+                    if(fila.moveToFirst()){
+                        id_usuario=fila.getInt(0)+1;
+                    }else{
+                        id_usuario=1;
+                    }
+                    /*try{
+                        id_usuario = fila.getInt(0);
                     }catch(Error e){
                         id_usuario = 1;
-                    }
+                    }*/
                     String correo = pt_correo.getText().toString();
                     String clave = pw_contrasena1.getText().toString();
                     String tipo = "usuario normal";
@@ -102,16 +107,17 @@ public class registro extends AppCompatActivity {
                     ContentValues registro_pu = new ContentValues();
 
                     int id_pusuario = 0;
-                    try{
-                        id_pusuario = fila_pu.getInt(fila_pu.getPosition());
-                    }catch(Error e){
-                        id_pusuario = 1;
+                    if(fila_pu.moveToFirst()){
+                        id_pusuario = fila_pu.getInt(0)+1;
+                    }else{
+                        id_pusuario=1;
                     }
-
-                    registro.put("id_datos_us",id_pusuario);
-                    registro.put("id_usuario", id_usuario);
-                    registro.put("nombres", "");
-                    registro.put("apellidos", "");
+                    String nombre= "-";
+                    String apellido= "-";
+                    registro_pu.put("id_datos_us",id_pusuario);
+                    registro_pu.put("id_usuario", id_usuario);
+                    registro_pu.put("nombres", nombre);
+                    registro_pu.put("apellidos", apellido);
 
                     BasedeDatos.insert("perfil_usuario", null, registro_pu);
 

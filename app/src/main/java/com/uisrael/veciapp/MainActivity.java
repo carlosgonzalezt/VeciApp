@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Spinner ob_sp_negocio;
     private EditText ob_pt_nomnegocio;
     private MapView ob_mp_mapa;
-    private int idactual=0;
+    private int idactual=0,idactualPU=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +73,18 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "NO EXISTE USUARIO ", Toast.LENGTH_SHORT).show();
             BasedeDatos.close();
         }
-
-
+        VeciSQLiteOpenHelper admin2 = new VeciSQLiteOpenHelper(this,"administracion",null,1);
+        SQLiteDatabase BasedeDatos2 = admin2.getWritableDatabase();//modo lectura escritura
+        Cursor filaPU = BasedeDatos2.rawQuery("select * from perfil_usuario", null); //deja aplicar select
+        if(filaPU.moveToFirst()){
+            idactualPU=filaPU.getInt(0);
+            ob_pt_nombre.setText(filaPU.getString(2)); //siempre el primero es 0
+            ob_pt_apellido.setText(filaPU.getString(3));
+            BasedeDatos.close();
+        }else{
+            Toast.makeText(this, "NO EXISTE USUARIO ", Toast.LENGTH_SHORT).show();
+            BasedeDatos.close();
+        }
     }
     //METODO MODIFICAR
     public void modificar(View view){
@@ -83,17 +93,23 @@ public class MainActivity extends AppCompatActivity {
 
         String correo= ob_pt_correo.getText().toString();
         String clave = ob_pt_clave.getText().toString();
-
-        if(!correo.isEmpty() && !clave.isEmpty() ){
+        String nombre=ob_pt_nombre.getText().toString();
+        String apellido=ob_pt_apellido.getText().toString();
+        if(!correo.isEmpty() && !clave.isEmpty() && !nombre.isEmpty()&& !apellido.isEmpty()){
 
             ContentValues registro= new ContentValues();
             registro.put("correo", correo);
             registro.put("clave", clave);
+            ContentValues registroPU= new ContentValues();
+            registroPU.put("nombres",nombre);
+            registroPU.put("apellidos",apellido);
 
             int cantidad = BasedeDatos.update("usuario",registro,"id_usuario="+idactual,null);
+            int cantidadpu = BasedeDatos.update("perfil_usuario",registroPU,"id_usuario="+idactualPU,null);
+
             BasedeDatos.close();
 
-            if(cantidad==1){
+            if(cantidad==1 && cantidadpu==1 ){
                 Toast.makeText(this, "SE HA MODIFICADO CORRECTAMENTE", Toast.LENGTH_SHORT).show();
             }else{
 
