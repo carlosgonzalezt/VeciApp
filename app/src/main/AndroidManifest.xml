@@ -21,6 +21,7 @@
 
         <activity android:name=".registro"></activity>
         <activity android:name=".navegador" />
+
         <activity android:name=".WebView" />
         <activity android:name=".MainActivity" />
         <activity android:name=".InformacionNegocio" />
