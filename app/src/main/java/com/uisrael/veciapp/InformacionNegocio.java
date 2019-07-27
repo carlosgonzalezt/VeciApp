@@ -11,14 +11,20 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class InformacionNegocio extends AppCompatActivity {
+public class InformacionNegocio extends AppCompatActivity implements OnMapReadyCallback {
 
     private TextView ob_tv_titulo2;
     private Spinner ob_sp_negocio;
@@ -31,10 +37,16 @@ public class InformacionNegocio extends AppCompatActivity {
     private String v_usuario = "";
     private String v_clave = "";
 
+    private GoogleMap mapa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informacion_negocio);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.vecimap);
+        mapFragment.getMapAsync( this);
 
         ob_tv_titulo2 = findViewById(R.id.tv_titulo2);
         ob_sp_negocio = findViewById(R.id.sp_negocio);
@@ -78,5 +90,14 @@ public class InformacionNegocio extends AppCompatActivity {
         startActivity(sig);
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mapa = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng uisrael = new LatLng(-0.1972037, -78.4921892);
+        mapa.addMarker(new MarkerOptions().position(uisrael).title("Quito"));
+        mapa.moveCamera(CameraUpdateFactory.newLatLng(uisrael));
+    }
 
 }
