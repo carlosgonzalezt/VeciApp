@@ -189,14 +189,14 @@
                 android:hint="@string/pt_nombrenegocio"
                 android:inputType="textPersonName"
                 android:textColor="@color/textonormal"
-                app:layout_constraintBottom_toTopOf="@+id/mapView1"
+                app:layout_constraintBottom_toTopOf="@+id/mapaRegistro"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 android:visibility="invisible"/>
 
             <com.google.android.gms.maps.MapView
-                android:id="@+id/mapView1"
+                android:id="@+id/mapaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginStart="8dp"

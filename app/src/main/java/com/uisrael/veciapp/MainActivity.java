@@ -1,7 +1,6 @@
 package com.uisrael.veciapp;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.MapView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.PrivateKey;
 
 public class MainActivity extends AppCompatActivity {
     //Universidad Israel
@@ -51,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         ob_tv_dnegocio = findViewById(R.id.tv_dnegocion);
         ob_sp_negocio = findViewById(R.id.sp_negocio);
         ob_pt_nomnegocio = findViewById(R.id.pt_nombrenegocio);
-        ob_mp_mapa = findViewById(R.id.mapView1);
+        ob_mp_mapa = findViewById(R.id.mapaRegistro);
         buscar();
 
     }

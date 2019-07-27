@@ -9,7 +9,7 @@
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/mapView1"
+        android:id="@+id/mapaRegistro"
         android:layout_width="362dp"
         android:layout_height="220dp"
         android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView1"
+        app:layout_constraintTop_toBottomOf="@+id/mapaRegistro"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
@@ -102,7 +102,7 @@
         android:hint="@string/pt_nombrenegocio"
         android:inputType="textPersonName"
         android:textColor="@color/textonormal"
-        app:layout_constraintBottom_toTopOf="@+id/mapView1"
+        app:layout_constraintBottom_toTopOf="@+id/mapaRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"

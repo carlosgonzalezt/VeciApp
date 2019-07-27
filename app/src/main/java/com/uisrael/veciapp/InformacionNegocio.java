@@ -19,9 +19,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class InformacionNegocio extends AppCompatActivity implements OnMapReadyCallback {
@@ -45,13 +43,13 @@ public class InformacionNegocio extends AppCompatActivity implements OnMapReadyC
         setContentView(R.layout.activity_informacion_negocio);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.vecimap);
+                .findFragmentById(R.id.mapaRegistro);
         mapFragment.getMapAsync( this);
 
         ob_tv_titulo2 = findViewById(R.id.tv_titulo2);
         ob_sp_negocio = findViewById(R.id.sp_negocio);
         ob_pt_nombrenegocio = findViewById(R.id.pt_nombrenegocio);
-        ob_mapView1 = findViewById(R.id.mapView1);
+        //ob_mapView1 = findViewById(R.id.mapaRegistro);
 
         //Asignar los valores al spiner para seleccionar
         String[] opciones = {"Tienda", "Verduleria / Fruteria o similares", "Carniceria", "Papeleria", "Centro de computo", "Ferreteria", "Farmacia", "Costureria", "Otros"};
