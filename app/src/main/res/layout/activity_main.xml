@@ -195,7 +195,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:visibility="invisible"/>
 
-            <com.google.android.gms.maps.MapView
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/mapaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
@@ -207,7 +209,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.485"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="invisible"/>
+                android:visibility="invisible"
+                tools:context=".MainActivity" />/>
+
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

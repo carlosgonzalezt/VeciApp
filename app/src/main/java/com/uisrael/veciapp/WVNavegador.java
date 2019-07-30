@@ -26,6 +26,6 @@ public class WVNavegador extends AppCompatActivity {
             }
         });
         // Cargamos la web
-        buscador.loadUrl("http://www.movilzona.es");
+        buscador.loadUrl("https://www.movilzona.es");
     }
 }

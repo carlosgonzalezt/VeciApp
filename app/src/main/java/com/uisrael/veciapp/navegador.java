@@ -31,6 +31,11 @@ public class navegador extends AppCompatActivity implements OnMapReadyCallback{
         startActivity(sig);
     }
 
+    public void BInfo(View view){
+        Intent sig = new Intent(this, WVNavegador.class);
+        startActivity(sig);
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mapa = googleMap;
