@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="405dp"
-        android:layout_height="226dp"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -23,15 +23,14 @@
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:autofillHints=""
         android:background="@color/fondocajas"
         android:ems="10"
-        android:hint="@string/pt_usuario"
+        android:hint="@string/pt_correo"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textColor="@color/textonormal"
         app:layout_constraintBottom_toTopOf="@+id/pw_clave"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:autofillHints=""
         android:background="@color/fondocajas"
@@ -53,23 +53,24 @@
         android:inputType="textPassword"
         android:textColor="@color/textonormal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="394dp" />
+        app:layout_constraintTop_toBottomOf="@+id/pt_usuario" />
 
     <Button
         android:id="@+id/bt_login"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:autofillHints=""
+        android:onClick="Buscar"
         android:text="@string/btn_inisesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pw_clave" />
+        app:layout_constraintTop_toBottomOf="@+id/pw_clave"
+        tools:text="@string/btn_inisesion" />
 
     <Button
         android:id="@+id/bt_registro"
@@ -80,6 +81,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="36dp"
         android:autofillHints=""
+        android:onClick="Registrar"
         android:text="@string/btn_registrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

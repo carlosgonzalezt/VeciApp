@@ -110,8 +110,8 @@ public class PruebaMapa<MapViewActivity> extends AppCompatActivity implements On
         gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
     }
 
-    public final Marker addMarker (MarkerOptions options){
+    /*public final Marker addMarker (MarkerOptions options){
 
-    }
+    }*/
 
 }
