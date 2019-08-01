@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class PruebaMapa extends AppCompatActivity {
     private MapView mapView;
     private GoogleMap gmap;
-    private Toolbar tb;
+    //private Toolbar tb;
 
     private static final String MAP_VIEW_BUNDLE_KEY = "MapViewBundleKey";
 
@@ -24,9 +24,9 @@ public class PruebaMapa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prueba_mapa);
 
-        tb = findViewById(R.id.toolbar);
+        //tb = findViewById(R.id.toolbar);
         //setSupportActionBar(tb);
-        tb.setSubtitle("MapView");
+        //tb.setSubtitle("MapView");
 
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {
