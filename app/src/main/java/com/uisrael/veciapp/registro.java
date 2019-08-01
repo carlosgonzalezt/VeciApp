@@ -139,4 +139,9 @@ public class registro extends AppCompatActivity {
             Toast.makeText(this, "la Contraseña y su confirmacion no coiciden", Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void IniSesion(View view){
+        Intent sig = new Intent(this, login.class);
+        startActivity(sig);
+    }
 }

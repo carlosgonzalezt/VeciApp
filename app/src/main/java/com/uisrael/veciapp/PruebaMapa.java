@@ -1,5 +1,6 @@
 package com.uisrael.veciapp;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toolbar;
@@ -9,10 +10,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PointOfInterest;
+import com.google.android.gms.maps.model.Polygon;
 
-public class PruebaMapa extends AppCompatActivity implements OnMapReadyCallback {
+public class PruebaMapa<MapViewActivity> extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap gmap;
     //private Toolbar tb;
@@ -84,6 +89,7 @@ public class PruebaMapa extends AppCompatActivity implements OnMapReadyCallback 
         mapView.onLowMemory();
     }
 
+    @Override
     public void onMapReady(GoogleMap googleMap) {
         gmap = googleMap;
         gmap.setMinZoomPreference(12);
@@ -102,6 +108,10 @@ public class PruebaMapa extends AppCompatActivity implements OnMapReadyCallback 
         gmap.addMarker(markerOptions);
 
         gmap.moveCamera(CameraUpdateFactory.newLatLng(ny));
+    }
+
+    public final Marker addMarker (MarkerOptions options){
+
     }
 
 }

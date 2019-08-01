@@ -30,7 +30,7 @@ public class Loading extends AppCompatActivity {
                 startActivity(sig);
             }else{
                 Toast.makeText(this, "NO SE ENCUENTRA REGISTRADO", Toast.LENGTH_SHORT).show();
-                Intent sig = new Intent(this,registro.class);
+                Intent sig = new Intent(this,login.class);
                 startActivity(sig);
                 veciDB.close();
             }

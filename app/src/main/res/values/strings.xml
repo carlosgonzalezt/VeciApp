@@ -13,9 +13,11 @@
     <string name="pt_nombrenegocio">Nombre de su Negocio</string>
     <string name="btn_regresar">Regresar</string>
     <string name="btn_registrar">Registrar</string>
+    <string name="btn_inisesion">Iniciar Sesion</string>
     <string name="ib_loading">Loading</string>
     <string name="todo">TODO</string>
     <string name="tv_registrar">Registro</string>
     <string name="rb_unormal">Usuario Estandar</string>
     <string name="rb_unegocio">Usuario con negocio</string>
+    <string name="tv_encabezado">Inicio de Sesion</string>
 </resources>
