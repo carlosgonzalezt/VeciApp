@@ -12,7 +12,7 @@ import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class PruebaMapa extends AppCompatActivity {
+public class PruebaMapa extends AppCompatActivity implements OnMapReadyCallback {
     private MapView mapView;
     private GoogleMap gmap;
     //private Toolbar tb;
