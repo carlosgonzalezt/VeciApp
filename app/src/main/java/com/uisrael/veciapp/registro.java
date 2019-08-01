@@ -112,8 +112,8 @@ public class registro extends AppCompatActivity {
                     }else{
                         id_pusuario=1;
                     }
-                    String nombre= "-";
-                    String apellido= "-";
+                    String nombre= "";
+                    String apellido= "";
                     registro_pu.put("id_datos_us",id_pusuario);
                     registro_pu.put("id_usuario", id_usuario);
                     registro_pu.put("nombres", nombre);
