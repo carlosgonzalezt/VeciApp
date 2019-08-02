@@ -1,17 +1,24 @@
 package com.uisrael.veciapp;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.location.Location;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -19,6 +26,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     //Universidad Israel
@@ -39,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private MapView ob_mp_mapa;
     private GoogleMap mapaReg;
     private int idactual=0,idactualPU=0;
+    private FusedLocationProviderClient mFuseLocationClient;
+    private String nlatitud , nlongitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.mapaRegistro);
         mapFragment.getMapAsync( this);
         buscar();
+        mFuseLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
     //METODO BUSCAR
@@ -147,9 +158,24 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mapaReg = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng uisrael = new LatLng(-0.1972037, -78.4921892);
-        mapaReg.addMarker(new MarkerOptions().position(uisrael).title("Quito"));
-        mapaReg.moveCamera(CameraUpdateFactory.newLatLng(uisrael));
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mFuseLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if(location!=null){
+                            // Add a marker in Sydney and move the camera
+                            LatLng uisrael = new LatLng(location.getLatitude(), location.getLongitude());
+                            mapaReg.addMarker(new MarkerOptions().position(uisrael).title("Mi Localizacion"));
+                            mapaReg.moveCamera(CameraUpdateFactory.newLatLng(uisrael));
+                        }
+                    }
+                });
+
+
     }
 }
