@@ -27,8 +27,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private  int MY_PERMISSIONS_REQUEST_READ_CONTACTS;
     //Universidad Israel
     //Integrantes:
     //Carlos Gonzales
@@ -50,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient mFuseLocationClient;
     private String nlatitud , nlongitud;
 
+    DatabaseReference mDatadase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync( this);
         buscar();
         mFuseLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mDatadase = FirebaseDatabase.getInstance().getReference();
     }
 
     //METODO BUSCAR
@@ -134,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             Toast.makeText(this, "CAMPOS VACIOS", Toast.LENGTH_SHORT).show();
         }
+
+
+
     }
 
     //Seleccion de tipo de usuario
@@ -160,7 +172,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED &&checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
             return;
         }
         mFuseLocationClient.getLastLocation()
@@ -172,6 +191,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             LatLng uisrael = new LatLng(location.getLatitude(), location.getLongitude());
                             mapaReg.addMarker(new MarkerOptions().position(uisrael).title("Mi Localizacion"));
                             mapaReg.moveCamera(CameraUpdateFactory.newLatLng(uisrael));
+                            //Para Guardar la latitud y longitud del local
+                            Map<String, Object>latlang=new HashMap<>();
+                            latlang.put("latitud",location.getLatitude());
+                            latlang.put("longitud",location.getLongitude());
+                            mDatadase.child("negocios").push().setValue(latlang);
                         }
                     }
                 });
