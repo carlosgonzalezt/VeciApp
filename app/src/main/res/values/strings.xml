@@ -20,4 +20,7 @@
     <string name="rb_unormal">Usuario Estandar</string>
     <string name="rb_unegocio">Usuario con negocio</string>
     <string name="tv_encabezado">Inicio de Sesion</string>
+    <string name="tv_p_encabezado1">Galeria</string>
+    <string name="tv_p_encabezado2">Calificacion</string>
+    <string name="tv_p_encabezado3">Comentarios</string>
 </resources>
